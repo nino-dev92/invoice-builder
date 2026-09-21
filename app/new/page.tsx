@@ -24,7 +24,7 @@ const emptyInvoice: InvoiceData = {
 
   taxRate: 0,
   discount: 0,
-  currency: "USD",
+  currency: "NGN",
   notes: "",
 
   amountPaid: 0,
@@ -127,17 +127,7 @@ export default function NewInvoicePage() {
         </div>
 
         {/* Basic details */}
-        <div className="grid grid-cols-2 gap-4">
-          <div>
-            <label className="block text-sm font-medium">Document number</label>
-            <input
-              className="mt-1 w-full rounded border p-2"
-              value={form.docNumber}
-              onChange={(e) => updateField("docNumber", e.target.value)}
-              placeholder="INV-0001"
-              required
-            />
-          </div>
+        <div className="grid grid-cols-1 gap-4">
           <div>
             <label className="block text-sm font-medium">Date</label>
             <input

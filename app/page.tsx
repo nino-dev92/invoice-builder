@@ -17,7 +17,7 @@ export default function Home() {
         </Link>
         <Link
           href="/invoices"
-          className="rounded-md border border-gray-300 px-5 py-2.5 hover:bg-gray-800 hover:text-white dark:hover:text-black"
+          className="rounded-md border border-gray-300 px-5 py-2.5 hover:bg-white hover:text-white dark:hover:text-black"
         >
           View history
         </Link>

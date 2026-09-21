@@ -7,12 +7,18 @@ import {
   Image,
 } from "@react-pdf/renderer";
 import path from "path";
+import fs from "fs";
 import { computeTotals } from "@/lib/types";
 import { InvoiceData } from "@/models/Invoice";
 
-// react-pdf renders on the server, not in a browser — so instead of a
-// URL like "/logo.png", it needs an actual file path on disk.
-const logoPath = path.join(process.cwd(), "public", "logo.png");
+// react-pdf renders on the server, not in a browser. Passing it a raw
+// file *path* string can be misread on Windows (a path starting with
+// "C:\" looks like it might have a URL "scheme:" in front of it to
+// some parsers). Reading the file into memory ourselves and handing
+// react-pdf the actual bytes sidesteps that entirely.
+const logoBuffer = fs.readFileSync(
+  path.join(process.cwd(), "public", "logo.png"),
+);
 
 // These are like CSS, but only the properties react-pdf supports.
 // Flexbox works here the same way it does on the web.
@@ -55,7 +61,7 @@ export default function InvoiceDocument({ data }: { data: InvoiceData }) {
   return (
     <Document>
       <Page size="A4" style={styles.page}>
-        <Image src={logoPath} style={{ width: 100, marginBottom: 16 }} />
+        <Image src={logoBuffer} style={{ width: 100, marginBottom: 16 }} />
         <Text style={styles.title}>{isInvoice ? "Invoice" : "Receipt"}</Text>
         <Text style={styles.docNumber}>{data.docNumber}</Text>
 
