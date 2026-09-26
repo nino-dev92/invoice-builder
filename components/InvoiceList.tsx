@@ -35,7 +35,7 @@ export default function InvoiceList({ invoices }: { invoices: InvoiceData[] }) {
         <h1 className="text-2xl font-semibold">History</h1>
         <Link
           href="/new"
-          className="rounded bg-black px-4 py-2 text-sm font-medium text-white hover:bg-gray-800"
+          className="rounded bg-black px-4 py-2 text-sm font-medium text-white hover:bg-gray-800 dark:hover:bg-gray-500 dark:bg-gray-800"
         >
           + New
         </Link>
